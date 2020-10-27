@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+	<form-beans>
+		
+		<!-- 成绩管理 -->
+		<form-bean name="scoreForm" type="ActionForm.ScoreActionForm"/>
+		
+		<!-- 信息管理 -->
+	    <form-bean name="infoForm" type="ActionForm.InfoActionForm"/>
+	
+	</form-beans>
+	
+	<action-mappings>
+		                                   
+		                        <!-- 学生信息管理配置 -->
+		 <!-- 显示学生信息 -->
+		<action path="/studentInfo"
+				type="infoaction.StudentInfoAction"
+				name="infoForm"
+				scope="request"
+		>
+			<forward name="success" path="/WEB-INF/infojsp/studentInfo.jsp"/>	
+		</action>                      
+		  
+		 <!-- 删除学生信息 -->
+		<action path="/UserDel"
+				type="infoaction.UserDelAction"
+				name="infoForm"
+				scope="request"
+		>
+			<forward name="success" path="/studentInfo.do"/>	
+		</action>   
+		
+		 <!-- 修改学生信息前 -->
+		<action path="/updataUser"
+				type="infoaction.UpdataUserAction"
+				name="infoForm"
+				scope="request"
+		>
+			<forward name="success" path="/WEB-INF/infojsp/Updata.jsp"/>	
+		</action>  
+		
+		<!-- 修改学生信息详细操作 -->
+		<action path="/modifyUser"
+				type="infoaction.modifyUserAction"
+				name="infoForm"
+				scope="request"
+		>
+			<forward name="success" path="/studentInfo.do"/>	
+		</action>                 
+		                       
+		                       
+		                       
+		                        <!-- 成绩管理模块 -->
+		
+		<!-- 显示学生成绩 -->
+		<action path="/StudentgradeInfo"
+				type="scoreaction.StudentgradeInfoAction"
+				name="scoreForm"
+				scope="request"
+		>
+			<forward name="success" path="/WEB-INF/scorejsp/showallstudentscore.jsp"/>	
+		</action>
+		
+		
+		<!-- 添加学生成绩 -->
+		<action path="/StudentGradeAdd"
+				type="scoreaction.StudentGradeAddAction"
+				name="scoreForm"
+				scope="request"
+		>
+			<forward name="success" path="/WEB-INF/scorejsp/StudentGradeAdd.jsp"/>	
+		</action>
+		
+		<!-- 添加学生成绩成功 -->
+		<action path="/StudentAddGradeFinsh"
+				type="scoreaction.StudentGradeAddFinshAction"
+				name="scoreForm"
+				scope="request"
+		>
+			<forward name="success" path="/StudentgradeInfo.do"/>	
+		</action>
+		
+		<!-- 删除指定学生成绩 -->
+		<action path="/StudentGradeDel"
+				type="scoreaction.StudentGradeDelAction"
+				name="scoreForm"
+				scope="request"
+		>
+			<forward name="success" path="/StudentgradeInfo.do"/>	
+		</action>
+		
+		<!-- 修改指定学生成绩 -->
+		<action path="/UpdataGrade"
+				type="scoreaction.StudentUpdataGradeAction"
+				name="scoreForm"
+				scope="request"
+		>
+			<forward name="success" path="/WEB-INF/scorejsp/updateGrade.jsp"/>	
+		</action>
+		
+		<!-- 修改指定学生成绩 成功-->
+		<action path="/StudentUpdateGradeFinsh"
+				type="scoreaction.StudentUpdateGradeFinshAction"
+				name="scoreForm"
+				scope="request"
+		>
+			<forward name="success" path="/StudentgradeInfo.do"/>	
+		</action>
+		
+	</action-mappings>
+	
+
+</struts-config>
+
